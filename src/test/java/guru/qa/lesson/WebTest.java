@@ -54,28 +54,28 @@ public class WebTest {
     }
 
 
-    static Stream<Arguments> selenideSiteButtonTest() {
-        return Stream.of(
-                Arguments.of(List.of("Quick start", "Docs", "FAQ", "Blog", "Javadoc", "Users", "Quotes"), Locale.EN),
-                Arguments.of(List.of("С чего начать?", "Док", "ЧАВО", "Блог", "Javadoc", "Пользователи", "Отзывы"), Locale.RU)
-        );
-    }
-
-    @MethodSource()
-    @ParameterizedTest(name ="проверка отображения кнопок для локали : {1}")
-    void selenideSiteButtonTest(List<String> buttonsTest, Locale locale) {
-        open("https://selenide.org");
-        $$("#languages a").find(text(locale.name())).click();
-        $$(".main-menu-pages a").filter(visible)
-                .shouldHave(CollectionCondition.texts(buttonsTest));
-    }
-
-    @EnumSource(Locale.class)
-    @ParameterizedTest
-    void checkLocal(Locale locale){
-        open("https://selenide.org");
-        $$("#languages a").find(text(locale.name())).shouldHave(text(locale));
-    }
+//    static Stream<Arguments> selenideSiteButtonTest() {
+//        return Stream.of(
+//                Arguments.of(List.of("Quick start", "Docs", "FAQ", "Blog", "Javadoc", "Users", "Quotes"), Locale.EN),
+//                Arguments.of(List.of("С чего начать?", "Док", "ЧАВО", "Блог", "Javadoc", "Пользователи", "Отзывы"), Locale.RU)
+//        );
+//    }
+//
+//    @MethodSource()
+//    @ParameterizedTest(name ="проверка отображения кнопок для локали : {1}")
+//    void selenideSiteButtonTest(List<String> buttonsTest, Locale locale) {
+//        open("https://selenide.org");
+//        $$("#languages a").find(text(locale.name())).click();
+//        $$(".main-menu-pages a").filter(visible)
+//                .shouldHave(CollectionCondition.texts(buttonsTest));
+//    }
+//
+//    @EnumSource(Locale.class)
+//    @ParameterizedTest
+//    void checkLocal(Locale locale){
+//        open("https://selenide.org");
+//        $$("#languages a").find(text(locale.name())).shouldHave(text(locale));
+//    }
 
 
 
